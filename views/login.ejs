@@ -1,0 +1,22 @@
+<% layout("./layouts/boilerplate.ejs") %>
+
+    <div class="flex flex-col justify-center items-center">
+        <h3 class="p-10 text-center text-2xl">login</h3>
+        <div class="flex flex-row justify-center items-center">
+            <form action="/account/login" method="post" class="flex flex-col justify-center items-center">
+                <div>
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" class="p-1 m-3 border-2 border-black rounded "
+                        required>
+                </div>
+                <div class="mt-5">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" class="p-1 m-3 border-2 border-black rounded"
+                        required>
+                </div>
+                <button class="px-10 py-2 bg-green-500 rounded mt-5">Login</button>
+            </form>
+        </div>
+            <p class="p-5">Create New Account <a href="/account/signup" class="underline text-blue-800">Signup</a></p>
+
+    </div>

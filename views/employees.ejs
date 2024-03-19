@@ -1,0 +1,110 @@
+<% layout("./layouts/boilerplate.ejs") %>
+
+    <%if (currentUser) {%>
+        <div>
+            <div class="flex flex-row justify-end items-center sm:mr-10">
+                <h5 class="pr-3 sm:mr-16">Total Count: <%= employeeData.length %>
+                </h5>
+                <a href="/employee/new" class="bg-green-300 my-2 p-1 w-60">Create New Employee</a>
+            </div>
+
+            <div>
+                <div class="text-end mt-  py-5 pr-10 bg-blue-300">
+                    <form action="/employee/search" method="get" id="search-form">
+                        <label for="search">Search</label>
+                        <input type="text" name="name" id="search" class="border-2 border-gray-200 rounded p-1"
+                            placeholder="Search By Name">
+                    </form>
+                </div>
+                <div>
+                    <div class=" px-2 pb-2 grid grid-cols-4 sm:grid-cols-6 md:grid-cols-10 bg-blue-300">
+                        <p class="hidden md:block">Unique Id</p>
+                        <p class="hidden sm:block">Image</p>
+                        <p>Name</p>
+                        <p class="hidden sm:block">Email</p>
+                        <p>Mobile No</p>
+                        <p>Designation</p>
+                        <p class="hidden md:block">gender</p>
+                        <p class="hidden md:block">Course</p>
+                        <p class="hidden md:block">Create date</p>
+                        <p>Action</p>
+                    </div>
+
+
+                    <% if(employeeData.length> 0) {%>
+                        <% employeeData.forEach((employee, index)=>{ %>
+                            <div class="px-2 my-5 grid grid-cols-4 sm:grid-cols-6 md:grid-cols-10">
+                                <p class="hidden md:block">
+                                    <%= index + 1 %>
+                                </p>
+                                <img src=<%=employee.image %> alt="Employee Image" class = "w-10 hidden sm:block">
+                                <p>
+                                    <%= employee.name %>
+                                </p>
+                                <a href="mailto:<%= employee.email %>?body=Hello%20there!"
+                                    class="overflow-auto hidden sm:block">
+                                    <%= employee.email %>
+                                </a>
+
+                                <p>
+                                    <%= employee.mobile %>
+                                </p>
+                                <p>
+                                    <%= employee.designation %>
+                                </p>
+                                <p class="hidden md:block">
+                                    <%= employee.gender %>
+                                </p>
+                                <p class="hidden md:block">
+                                    <%= employee.course %>
+                                </p>
+                                <p class="hidden md:block">
+                                    <%= employee.date %>
+                                </p>
+                                <span>
+                                    <a href="/employee/<%= employee._id%>">Edit - </a>
+                                    <form action="/employee/<%= employee._id%>?_method=DELETE" method="POST"
+                                        class="inline">
+                                        <button class="">Delete</button>
+                                    </form>
+                                </span>
+
+
+
+                            </div>
+                            <% }) %>
+                                <% } else { %>
+                                    <p>You have not created any employees yet.</p>
+                                    <% } %>
+                </div>
+
+            </div>
+        </div>
+        <% } else {%>
+            <div class="flex flex-col items-center mt-10">
+                <p class="text-xl mb-10">To See Employees List then login first</p>
+                <p class="text-2xl">If you are new then first <a href="/account/signup" class="text-blue-500">signup</a>
+                </p>
+                <br>
+                <p class="text-2xl mt-5">Already have account <a href="/account/login" class="text-blue-500">login</a>
+                </p>
+            </div>
+            <% } %>
+
+                <script>
+                    const searchInput = document.getElementById('search');
+                    const searchForm = document.getElementById('searchForm');
+                    let typingTimer;
+                    const doneTypingInterval = 1000;
+
+                    searchInput.addEventListener('input', () => {
+                        clearTimeout(typingTimer);
+                        if (searchInput.value.trim() !== '') {
+                            typingTimer = setTimeout(submitForm, doneTypingInterval);
+                        }
+                    });
+
+                    function submitForm() {
+                        searchForm.submit();
+                    }
+                </script>

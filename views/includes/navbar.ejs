@@ -1,0 +1,14 @@
+<nav class="p-5 bg-gray-300 text-sm sm:text-lg flex flex row justify-evenly align-item">
+    <a href="/">Home</a>
+    <a href="/employee">Employee List</a>
+    <div class="flex flex-row gap-5 sm:gap-10">
+        <% if (currentUser) { %>
+            <span><%= currentUser.username  %> - </span>
+            <a href="/account/logout">Logout</a>
+
+            <%}else{%>
+                <a href="/account/signup">Signup</a>
+                <a href="/account/login">Login</a>
+                <%}%>
+    </div>
+</nav>

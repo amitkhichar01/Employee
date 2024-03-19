@@ -1,0 +1,25 @@
+<%if(success && success.length){%>
+<div class="w-100 bg-green-300 py-5 text-center success">
+    <%= success %>
+</div>
+<%}%> 
+<%if(error && error.length){%>
+<div class="w-100 bg-red-300 py-5 text-center error">
+    <%= error%>
+</div>
+<%}%>
+
+<script>
+    let success = document.querySelector('.success');
+        let error = document.querySelector('.error');
+
+        setTimeout(()=>{
+             if (success.innerText) {
+                success.style.display = 'none';
+            }
+            if(error.innerText) {
+                error.style.display = 'none';
+            }
+
+        }, 5000);
+</script>

@@ -1,0 +1,68 @@
+<% layout("./layouts/boilerplate.ejs") %>
+
+    <div>
+        <form action="/employee" method="post" class="my-10 flex flex-col justify-center items-center">
+            <div>
+                <label for="name" class="block">Name</label>
+                <input type="text" name="name" id="name" class="p-1 m-3 border-2 border-black rounded w-60" required>
+            </div>
+            <div>
+                <label for="email" class="block">Email</label>
+                <input type="email" name="email" id="email" class="p-1 m-3 border-2 border-black rounded w-60" required>
+            </div>
+            <div>
+                <label for="mobile-number" class="block">Mobile No</label>
+                <input type="number" name="mobile" id="mobile-number" class="p-1 m-3 border-2 border-black rounded w-60"
+                    required>
+            </div>
+            <div>
+                <label for="designation" class="block">Designation</label>
+                <select name="designation" id="designation" class="p-1 m-3 border-2 border-black rounded w-60" required>
+                    <option value="HR">HR</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Sales">Sales</option>
+                </select>
+            </div>
+            <div>
+                <label for="image" class="block">Image</label>
+                <input type="text" name="image" id="image" class="p-1 m-3 border-2 border-black rounded w-60"
+                    placeholder="Enter image url" required>
+            </div>
+            <div>
+                <p class="py-2">Course</p>
+                <label for="mca" class="pl-9">MCA</label>
+                <input type="checkbox" name="course" value="MCA" id="mca">
+                <label for="bca" class="pl-9">BCA</label>
+                <input type="checkbox" name="course" value="BCA" id="bca">
+                <label for="bsc" class="pl-9">BSC</label>
+                <input type="checkbox" name="course" value="BSC" id="bsc">
+            </div>
+            <div>
+                <label class="block py-2">gender</label>
+                <label for="male" class="pl-9">Male</label>
+                <input type="radio" name="gender" id="male" value="Male"
+                    class=" m-3  border-2 border-black rounded w-30" required>
+                <label for="female" class="ml-16">female</label>
+                <input type="radio" name="gender" id="female" value="Female"
+                    class="p-1 m-3 border-2 border-black rounded w-30" required>
+            </div>
+
+            <button class="bg-green-400 border-2 border-green-500 py-2 px-5 my-5 rounded text-center">Add
+                Employee</button>
+
+        </form>
+    </div>
+
+
+    <script>
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach((checkbox) => {
+            checkbox.addEventListener('click', () => {
+                checkboxes.forEach((cb) => {
+                    if (cb !== checkbox) {
+                        cb.checked = false;
+                    }
+                });
+            });
+        });
+    </script>
