@@ -7,11 +7,11 @@ Follow these steps to get a local development environment up and running:
 
 2. **Install Dependencies:**  
    After cloning your forked repository, navigate to the project directory in your terminal and run the following command to install the necessary dependencies:
-   ####npm install
+   `npm install`
 
 4. **Run the Server:**  
 Once the dependencies are installed, start the server by running the following command:
-nodemon app.js
+`nodemon app.js`
 
 This command will start the server using nodemon, which automatically restarts the server when changes are made.
 
